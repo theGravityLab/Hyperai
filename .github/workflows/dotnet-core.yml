@@ -5,9 +5,7 @@ on:
     branches: [ master ]
 
 jobs:
-  build_and_punlish:
-    env: 
-      PROJECT_NAME: Hyperai.Core
+  hyperai_abstractions:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,16 +16,45 @@ jobs:
         dotnet-version: 3.1.101
     - name: Install dependencies
       run: |
-        dotnet restore $PROJECT_NAME
-        dotnet restore $PROJECT_NAME.Tests
+        dotnet restore
     - name: Build
       run: |
-        dotnet build --configuration Release --no-restore $PROJECT_NAME
-        dotnet build --configuration Release --no-restore $PROJECT_NAME.Tests
+        dotnet build --configuration Release --no-restore Hyperai.Abstractions
+        dotnet build --configuration Release --no-restore Hyperai.Abstractions.Tests
+    - name: Test
+      run: dotnet test --no-restore --verbosity normal Hyperai.Units.Abstractions.Tests
+    - name: Pack
+      run: dotnet pack --configuration Release --include-symbols -o bin/artifacts/ Hyperai.Abstractions
+    - name: publish on version change
+      id: publish_nuget
+      uses: rohith/publish-nuget@v2
+      with:
+        # Filepath of the project to be packaged, relative to root of repository
+        PROJECT_FILE_PATH: Hyperai.Abstractions/Hyperai.Abstractions.csproj
+        # API key to authenticate with NuGet server
+        NUGET_KEY: ${{ secrets.PACKAGE_PUSH }}
+        INCLUDE_SYMBOLS: true
+
+  hyperai_core:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.1.101
+    - name: Install dependencies
+      run: |
+        dotnet restore
+    - name: Build
+      run: |
+        dotnet build --configuration Release --no-restore Hyperai.Core
+        dotnet build --configuration Release --no-restore Hyperai.Core.Tests
     - name: Test
       run: dotnet test --no-restore --verbosity normal $PROJECT_NAME.Tests
     - name: Pack
-      run: dotnet pack --configuration Release --include-symbols -o bin/artifacts/ $PROJECT_NAME
+      run: dotnet pack --configuration Release --include-symbols -o bin/artifacts/ Hyperai.Core
     - name: publish on version change
       id: publish_nuget
       uses: rohith/publish-nuget@v2
