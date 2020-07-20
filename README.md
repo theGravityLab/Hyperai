@@ -1,0 +1,2 @@
+# Hyperai.Core
+Hyperai Implementation
