@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Hyperai.Messages
 {
+    /// <summary>
+    /// 一份消息组件列表, 提供针对于消息组件的专有操作
+    /// </summary>
     public sealed class MessageChain : IEnumerable<MessageComponent>
     {
         public int Count { get; private set; }
@@ -39,9 +42,9 @@ namespace Hyperai.Messages
 
         /// <summary>
         /// 获取消息的字符串表示, 特殊类型用的表示由 <see cref="MessageComponent.ToString"/> 决定.
-        /// 如果要序列化或格式化成带有特殊码的字符串请使用 <see cref="IMessageChainFormatter"/>.
+        /// 如果要序列化成支持反序列化的字符串请使用 <see cref="IMessageChainFormatter"/>.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>对象的字符串表示</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -55,7 +58,7 @@ namespace Hyperai.Messages
         /// <summary>
         /// 判断是否与另一个消息内容完全相同
         /// </summary>
-        /// <param name="other"></param>
+        /// <param name="other">对比的另一个实例</param>
         /// <returns></returns>
         public bool ChainEquals(MessageChain other)
         {
