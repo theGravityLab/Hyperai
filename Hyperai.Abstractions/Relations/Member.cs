@@ -1,4 +1,6 @@
-﻿namespace Hyperai.Relations
+﻿using System;
+
+namespace Hyperai.Relations
 {
     public enum GroupRole
     {
@@ -6,9 +8,13 @@
         Member,
         Administrator
     }
+
+    /// <summary>
+    /// 群中的成员,必须位于一个群内
+    /// </summary>
     public sealed class Member : User
     {
-        public override string Identifier => $"{Identity}@{Group.Identity}";
+        public override string Identifier => $"{Identity}@{Group.Value.Identity}";
         /// <summary>
         /// 头衔
         /// </summary>
@@ -24,7 +30,7 @@
         /// <summary>
         /// 所在群
         /// </summary>
-        public Group Group { get; set; }
+        public Lazy<Group> Group { get; set; }
         /// <summary>
         /// 所在群中的角色
         /// </summary>

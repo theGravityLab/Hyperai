@@ -16,8 +16,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hyperai.Abstractions" Version="2020.7.20" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0-preview.6.20305.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hyperai.Abstractions\Hyperai.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
