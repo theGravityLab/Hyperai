@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>Hyperai</RootNamespace>
-    <AssemblyVersion>2020.7.21</AssemblyVersion>
+    <AssemblyVersion>2020.7.22</AssemblyVersion>
     <PackageId>Hyperai.Core</PackageId>
-    <Version>2020.7.21</Version>
+    <Version>2020.7.22</Version>
     <Authors>GravityLab</Authors>
     <Company>Unicore</Company>
     <PackageDescription>Hyperai.Core</PackageDescription>
@@ -16,8 +16,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hyperai.Abstractions" Version="2020.7.20" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0-preview.6.20305.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Hyperai.Abstractions\Hyperai.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>
