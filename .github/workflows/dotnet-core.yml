@@ -24,8 +24,6 @@ jobs:
         dotnet build --configuration Release --no-restore Hyperai.Abstractions.Tests
     - name: Test
       run: dotnet test --no-restore --verbosity normal Hyperai.Abstractions.Tests
-    - name: Pack
-      run: dotnet pack --configuration Release --include-symbols -o bin/artifacts/ Hyperai.Abstractions
     - name: publish on version change
       id: publish_nuget
       uses: rohith/publish-nuget@v2
@@ -55,8 +53,6 @@ jobs:
         dotnet build --configuration Release --no-restore Hyperai.Core.Tests
     - name: Test
       run: dotnet test --no-restore --verbosity normal Hyperai.Core.Tests
-    - name: Pack
-      run: dotnet pack --configuration Release --include-symbols -o bin/artifacts/ Hyperai.Core
     - name: publish on version change
       id: publish_nuget
       uses: rohith/publish-nuget@v2
