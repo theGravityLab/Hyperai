@@ -23,7 +23,6 @@ namespace Hyperai.Core.Tests.Serialization
             // A
             MessageChain res = parser.Parse("[hyper.source(1024)]World[hyper.image({3A9B96FE-FDB8-D597-560A-3517A8031F5A}.mirai,http://gchat.qpic.cn/gchatpic_new/2419328026/594429092-2161359014-3A9B96FEFDB8D597560A3517A8031F5A/0?term=2)]Hello");
 
-
             // A
             Assert.IsTrue(chain.ChainEquals(res));
         }

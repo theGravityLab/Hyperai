@@ -23,7 +23,6 @@ namespace Hyperai.Core.Tests.Serialization
             // A
             string res = formatter.Format(chain);
 
-
             // A
             Assert.AreEqual(res, "[hyper.source(1024)]World[hyper.image(id,https://example.com/)]Hello");
         }

@@ -8,6 +8,7 @@ namespace Hyperai
         IServiceCollection Services { get; }
 
         void Use(Type middleware);
+
         void UseStartup<TStartup>() where TStartup : IHyperaiApplicationBuilderStartup, new();
     }
 }

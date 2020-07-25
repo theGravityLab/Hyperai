@@ -8,7 +8,9 @@ namespace Hyperai
     {
         IReadOnlyList<Type> Middlewares { get; set; }
         IServiceProvider Provider { get; set; }
+
         Task StartAsync();
+
         Task StopAsync();
     }
 }

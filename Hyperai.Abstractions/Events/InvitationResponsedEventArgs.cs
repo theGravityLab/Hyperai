@@ -8,6 +8,7 @@
         public string MessageToAttach { get; set; }
         public InvitationResponseOperationType Operation { get; set; }
     }
+
     public enum InvitationResponseOperationType
     {
         Accepted = 0,

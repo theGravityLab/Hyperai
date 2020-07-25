@@ -9,7 +9,6 @@
         public MemberRequestResponseOperationType Operation { get; set; }
     }
 
-
     public enum MemberRequestResponseOperationType
     {
         Accepted = 0,

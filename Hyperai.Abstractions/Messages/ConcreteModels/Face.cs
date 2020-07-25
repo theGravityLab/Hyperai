@@ -11,6 +11,7 @@ namespace Hyperai.Messages.ConcreteModels
         {
             FaceId = faceId;
         }
+
         public override int GetHashCode()
         {
             return FaceId;

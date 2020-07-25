@@ -12,23 +12,22 @@ namespace Hyperai.Messages
     public sealed class MessageChain : IEnumerable<MessageComponent>
     {
         public int Count { get; private set; }
-        public long? MessageId { get; private set; }
         internal IEnumerable<MessageComponent> components { get; set; }
 
         /// <summary>
-        /// 使用已经确定的 <see cref="MessageComponent"/> 集合创建一个 <see cref="MessageChain"/> 实例
+        /// 使用已经确定的 <see cref="MessageComponent" /> 集合创建一个 <see cref="MessageChain" /> 实例
         /// </summary>
         /// <param name="list">组件集合</param>
-        public MessageChain(IEnumerable<MessageComponent> list) : this(list, null) { }
 
-        public MessageChain(IEnumerable<MessageComponent> list, long? messageId)
+        public MessageChain(IEnumerable<MessageComponent> list)
         {
             components = list ?? throw new ArgumentNullException("List cannot be null.");
             Count = list.Count();
-            MessageId = messageId;
         }
 
-        private MessageChain() { }
+        private MessageChain()
+        {
+        }
 
         public IEnumerator<MessageComponent> GetEnumerator()
         {
@@ -41,8 +40,8 @@ namespace Hyperai.Messages
         }
 
         /// <summary>
-        /// 获取消息的字符串表示, 特殊类型用的表示由 <see cref="MessageComponent.ToString"/> 决定.
-        /// 如果要序列化成支持反序列化的字符串请使用 <see cref="IMessageChainFormatter"/>.
+        /// 获取消息的字符串表示, 特殊类型用的表示由 <see cref="MessageComponent.ToString" /> 决定. 如果要序列化成支持反序列化的字符串请使用
+        /// <see cref="IMessageChainFormatter" />.
         /// </summary>
         /// <returns>对象的字符串表示</returns>
         public override string ToString()

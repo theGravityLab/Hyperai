@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>Hyperai</RootNamespace>
-    <AssemblyVersion>2020.7.23</AssemblyVersion>
+    <AssemblyVersion>2020.7.24</AssemblyVersion>
     <PackageId>Hyperai.Abstractions</PackageId>
-    <Version>2020.7.23</Version>
+    <Version>2020.7.24</Version>
     <Authors>GravityLab</Authors>
     <Company>Unicore</Company>
     <License>https://github.com/theGravityLab/Hyperai.Abstractions/blob/master/LICENSE</License>
@@ -19,5 +19,4 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.6" />
   </ItemGroup>
-
 </Project>

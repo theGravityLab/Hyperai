@@ -13,9 +13,8 @@ namespace Hyperai
         public IReadOnlyList<Type> Middlewares { get; set; }
         public IServiceProvider Provider { get; set; }
 
-
         /// <summary>
-        /// 创建一个线程并运行 <see cref="Run"/>
+        /// 创建一个线程并运行 <see cref="Run" />
         /// </summary>
         public async Task StartAsync()
         {
