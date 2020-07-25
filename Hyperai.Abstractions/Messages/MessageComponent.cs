@@ -3,6 +3,7 @@
     public abstract class MessageComponent
     {
         public virtual string TypeName => GetType().Name;
+
         /// <summary>
         /// 将内容转换为字符串表示. 这将跳过无法表示的特殊类型, 或用符号代替.
         /// </summary>

@@ -9,10 +9,12 @@ namespace Hyperai.Relations
     public sealed class Self : User
     {
         public override string Identifier => Identity.ToString();
+
         /// <summary>
         /// 自己所加过的群
         /// </summary>
         public Lazy<IEnumerable<Group>> Groups { get; set; }
+
         /// <summary>
         /// 自己所加过的好友
         /// </summary>

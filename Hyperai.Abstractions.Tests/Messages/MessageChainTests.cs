@@ -19,6 +19,7 @@ namespace Hyperai.Abstractions.Tests.Messages
             // Assert
             Assert.IsTrue(assert);
         }
+
         [TestMethod]
         public void ChainEquals_WithOther_ReturnsFalse()
         {
@@ -30,6 +31,7 @@ namespace Hyperai.Abstractions.Tests.Messages
             // Assert
             Assert.IsFalse(assert);
         }
+
         [TestMethod]
         public void ChainEquals_WithNull_ReturnsFalse()
         {

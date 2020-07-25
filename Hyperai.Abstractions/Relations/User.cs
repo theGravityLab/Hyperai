@@ -2,7 +2,6 @@
 {
     public abstract class User : RelationModel
     {
-
         /// <summary>
         /// 用户昵称
         /// </summary>

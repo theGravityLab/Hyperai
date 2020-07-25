@@ -64,5 +64,12 @@ namespace Hyperai.Messages
             builder.Add(image);
             return builder;
         }
+
+        public static MessageChainBuilder AddQuote(this MessageChainBuilder builder, long target)
+        {
+            var quote = new Quote(target);
+            builder.Add(quote);
+            return builder;
+        }
     }
 }

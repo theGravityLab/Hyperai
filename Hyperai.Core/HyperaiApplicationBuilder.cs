@@ -11,10 +11,12 @@ namespace Hyperai
 
         private readonly List<Type> middlewares = new List<Type>();
         private Type typeStartup;
+
         public void UseStartup<TStartup>() where TStartup : IHyperaiApplicationBuilderStartup, new()
         {
             typeStartup = typeof(TStartup);
         }
+
         public IHyperaiApplication Build()
         {
             IHyperaiApplicationBuilderStartup startup = (IHyperaiApplicationBuilderStartup)Activator.CreateInstance(typeStartup, false);

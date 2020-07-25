@@ -8,31 +8,38 @@ namespace Hyperai.Messages.ConcreteModels
         /// 戳一戳
         /// </summary>
         Poke = 1,
+
         /// <summary>
         /// 比心
         /// </summary>
         ShowLove,
+
         /// <summary>
         /// 点赞
         /// </summary>
         Like,
+
         /// <summary>
         /// 心碎
         /// </summary>
         Heartbroken,
+
         /// <summary>
         /// 666
         /// </summary>
         SixSixSix,
+
         /// <summary>
         /// 放大招
         /// </summary>
         FangDaZhao,
     }
+
     [Serializable]
     public class Poke : MessageComponent
     {
         public PokeType Name { get; private set; }
+
         public Poke(PokeType type)
         {
             Name = type;

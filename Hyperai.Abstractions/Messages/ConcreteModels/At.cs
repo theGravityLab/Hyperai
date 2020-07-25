@@ -11,6 +11,7 @@ namespace Hyperai.Messages.ConcreteModels
         {
             TargetId = targetId;
         }
+
         public override int GetHashCode()
         {
             return TargetId.GetHashCode();
