@@ -9,7 +9,7 @@ namespace Hyperai.Serialization
         public MessageChain Parse(string text)
         {
             MessageChainBuilder builder = new MessageChainBuilder();
-            MatchCollection res = Regex.Matches(text, @"\[hyper\.(?<name>[a-z]+)\((?<code>[a-z0-9A-Z_\\:/,.@\-=?&#\{\}]+)\)\]");
+            MatchCollection res = Regex.Matches(text, @"\[hyper\.(?<name>[a-z]+)\((?<code>[a-z0-9A-Z_\\:/,.@\-=?&#{}\ ]*)\)\]");
             int last = 0;
             Queue<Match> queue = new Queue<Match>();
             foreach (Match match in res)

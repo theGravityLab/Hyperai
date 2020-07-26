@@ -5,7 +5,7 @@ namespace Hyperai.Messages.ConcreteModels
     [Serializable]
     public class Face : MessageComponent
     {
-        public int FaceId { get; private set; }
+        public int FaceId { get; set; }
 
         public Face(int faceId)
         {

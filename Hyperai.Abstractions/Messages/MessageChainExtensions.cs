@@ -1,7 +1,5 @@
 ﻿using Hyperai.Messages.ConcreteModels;
-using System;
 using System.Linq;
-using System.Reflection;
 
 namespace Hyperai.Messages
 {
@@ -24,9 +22,24 @@ namespace Hyperai.Messages
         /// <returns>包含引用信息的消息构造器</returns>
         public static MessageChainBuilder MakeReply(this MessageChain chain)
         {
-            var builder = new MessageChainBuilder();
+            MessageChainBuilder builder = new MessageChainBuilder();
             builder.AddQuote(((Source)chain.First(x => x is Source)).MessageId);
             return builder;
+        }
+
+        /// <summary>
+        /// 返回当前消息链的可读形式, 即去除了 <see cref="Source" /> 元素
+        /// </summary>
+        /// <param name="chain">原链</param>
+        /// <returns>不包含不便于程序阅读元素的新链</returns>
+        public static MessageChain AsReadable(this MessageChain chain)
+        {
+            return new MessageChain(chain.Where(x => !(x is Source)));
+        }
+
+        public static MessageChain AsSendable(this MessageChain chain)
+        {
+            return new MessageChain(chain.Where(x => !(x is Source) && !(x is Quote)));
         }
     }
 }
