@@ -5,7 +5,7 @@ namespace Hyperai.Messages.ConcreteModels
     [Serializable]
     public class Quote : MessageComponent
     {
-        public long MessageId { get; private set; }
+        public long MessageId { get; set; }
 
         public Quote(long messageId)
         {

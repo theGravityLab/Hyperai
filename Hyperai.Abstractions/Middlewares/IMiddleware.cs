@@ -9,7 +9,7 @@ namespace Hyperai.Middlewares
         /// 执行中间件功能
         /// </summary>
         /// <param name="args">待处理的事件参数</param>
-        /// <returns>是否阻断事件处理管线</returns>
+        /// <returns>是否阻断事件处理管线, false 意味着否</returns>
         bool Run(IApiClient sender, GenericEventArgs args);
     }
 }

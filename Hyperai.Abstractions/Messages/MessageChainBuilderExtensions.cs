@@ -67,7 +67,7 @@ namespace Hyperai.Messages
 
         public static MessageChainBuilder AddQuote(this MessageChainBuilder builder, long target)
         {
-            var quote = new Quote(target);
+            Quote quote = new Quote(target);
             builder.Add(quote);
             return builder;
         }

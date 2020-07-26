@@ -5,7 +5,7 @@ namespace Hyperai.Messages.ConcreteModels
     [Serializable]
     public class Plain : MessageComponent
     {
-        public string Text { get; private set; }
+        public string Text { get; set; }
 
         /// <summary>
         /// 构造一个 <see cref="Plain" /> 对象

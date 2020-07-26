@@ -5,7 +5,7 @@ namespace Hyperai.Messages.ConcreteModels
     [Serializable]
     public class Source : MessageComponent
     {
-        public long MessageId { get; }
+        public long MessageId { get; set; }
 
         public Source(long id)
         {

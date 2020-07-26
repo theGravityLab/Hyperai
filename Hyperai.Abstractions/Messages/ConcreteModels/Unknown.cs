@@ -2,7 +2,7 @@
 {
     public class Unknown : MessageComponent
     {
-        public string Data { get; private set; }
+        public string Data { get; set; }
 
         public Unknown(string data)
         {
