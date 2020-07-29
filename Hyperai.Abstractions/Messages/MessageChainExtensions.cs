@@ -37,6 +37,11 @@ namespace Hyperai.Messages
             return new MessageChain(chain.Where(x => !(x is Source)));
         }
 
+        /// <summary>
+        /// 返回当前消息链的适用于发送形式, 去除仅用于接收的消息元素, 即去除了 <see cref="Source" /> 和 <see cref="Quote" />
+        /// </summary>
+        /// <param name="chain">原链</param>
+        /// <returns>包含不便发送元素的新链</returns>
         public static MessageChain AsSendable(this MessageChain chain)
         {
             return new MessageChain(chain.Where(x => !(x is Source) && !(x is Quote)));
