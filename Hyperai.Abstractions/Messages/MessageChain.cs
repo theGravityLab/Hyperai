@@ -68,5 +68,10 @@ namespace Hyperai.Messages
 
             return components.SequenceEqual(other.components);
         }
+
+        public static MessageChain Construct(params MessageComponent[] components)
+        {
+            return new MessageChain(components);
+        }
     }
 }
