@@ -12,7 +12,7 @@ namespace Hyperai.Messages
     public sealed class MessageChain : IEnumerable<MessageComponent>
     {
         public int Count { get; private set; }
-        internal IEnumerable<MessageComponent> components { get; set; }
+        internal IEnumerable<MessageComponent> Components { get; set; }
 
         /// <summary>
         /// 使用已经确定的 <see cref="MessageComponent" /> 集合创建一个 <see cref="MessageChain" /> 实例
@@ -21,7 +21,7 @@ namespace Hyperai.Messages
 
         public MessageChain(IEnumerable<MessageComponent> list)
         {
-            components = list ?? throw new ArgumentNullException("List cannot be null.");
+            Components = list ?? throw new ArgumentNullException("List cannot be null.");
             Count = list.Count();
         }
 
@@ -31,12 +31,12 @@ namespace Hyperai.Messages
 
         public IEnumerator<MessageComponent> GetEnumerator()
         {
-            return components.GetEnumerator();
+            return Components.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return components.GetEnumerator();
+            return Components.GetEnumerator();
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Hyperai.Messages
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (MessageComponent component in components)
+            foreach (MessageComponent component in Components)
             {
                 sb.Append(component.ToString());
             }
@@ -66,7 +66,7 @@ namespace Hyperai.Messages
                 return false;
             }
 
-            return components.SequenceEqual(other.components);
+            return Components.SequenceEqual(other.Components);
         }
 
         public static MessageChain Construct(params MessageComponent[] components)

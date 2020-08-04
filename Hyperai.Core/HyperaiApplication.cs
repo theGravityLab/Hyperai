@@ -24,15 +24,13 @@ namespace Hyperai
                 apiClient.Connect();
                 apiClient.On<GenericEventArgs>((sender, args) =>
                 {
-                    using (IServiceScope scope = Provider.CreateScope())
+                    using IServiceScope scope = Provider.CreateScope();
+                    foreach (Type type in Middlewares)
                     {
-                        foreach (Type type in Middlewares)
+                        IMiddleware middleware = ActivatorUtilities.CreateInstance(Provider, type) as IMiddleware;
+                        if (!middleware.Run(sender, args))
                         {
-                            IMiddleware middleware = ActivatorUtilities.CreateInstance(Provider, type) as IMiddleware;
-                            if (!middleware.Run(sender, args))
-                            {
-                                break;
-                            }
+                            break;
                         }
                     }
                 });
