@@ -8,8 +8,7 @@ namespace Hyperai.Messages
         public static MessageChainBuilder AddPlain(this MessageChainBuilder builder, string text)
         {
             Plain plain = new Plain(text);
-            builder.Add(plain);
-            return builder;
+            return builder.Add(plain);
         }
 
         public static MessageChainBuilder AddImage(this MessageChainBuilder builder, Uri url)
@@ -25,8 +24,7 @@ namespace Hyperai.Messages
         public static MessageChainBuilder AddImage(this MessageChainBuilder builder, string imageId, Uri url)
         {
             Image image = new Image(imageId, url);
-            builder.Add(image);
-            return builder;
+            return builder.Add(image);
         }
 
         public static MessageChainBuilder AddFace(this MessageChainBuilder builder, FaceType type)
@@ -37,15 +35,13 @@ namespace Hyperai.Messages
         public static MessageChainBuilder AddFace(this MessageChainBuilder builder, int faceId)
         {
             Face face = new Face(faceId);
-            builder.Add(face);
-            return builder;
+            return builder.Add(face);
         }
 
         public static MessageChainBuilder AddPoke(this MessageChainBuilder builder, PokeType type)
         {
             Poke poke = new Poke(type);
-            builder.Add(poke);
-            return builder;
+            return builder.Add(poke);
         }
 
         public static MessageChainBuilder AddFlash(this MessageChainBuilder builder, Uri url)
@@ -61,15 +57,25 @@ namespace Hyperai.Messages
         public static MessageChainBuilder AddFlash(this MessageChainBuilder builder, string imageId, Uri url)
         {
             Flash image = new Flash(imageId, url);
-            builder.Add(image);
-            return builder;
+            return builder.Add(image);
         }
 
         public static MessageChainBuilder AddQuote(this MessageChainBuilder builder, long target)
         {
             Quote quote = new Quote(target);
-            builder.Add(quote);
-            return builder;
+            return builder.Add(quote);
+        }
+
+        public static MessageChainBuilder AddAt(this MessageChainBuilder builder, long who)
+        {
+            At at = new At(who);
+            return builder.Add(at);
+        }
+
+        public static MessageChainBuilder AddAtAll(this MessageChainBuilder builder)
+        {
+            AtAll atall = new AtAll();
+            return builder.Add(atall);
         }
     }
 }

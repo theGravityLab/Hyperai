@@ -26,7 +26,7 @@ namespace Hyperai.Serialization
 
                 if (match.Index > last)
                 {
-                    builder.AddPlain(text.Substring(last, match.Index - last));
+                    builder.AddPlain(text[last..match.Index]);
                     last = match.Index;
                 }
                 else

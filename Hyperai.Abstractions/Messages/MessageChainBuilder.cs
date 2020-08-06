@@ -8,7 +8,7 @@ namespace Hyperai.Messages
 
         public MessageChain Build()
         {
-            MessageChain chain = new MessageChain(components.AsReadOnly());
+            MessageChain chain = new MessageChain(components);
             return chain;
         }
 

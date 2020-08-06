@@ -52,7 +52,7 @@ namespace Hyperai.Messages.ConcreteModels
 
         public override string ToString()
         {
-            return $"<POKE {Name.ToString()}>";
+            return $"<POKE {Name}>";
         }
     }
 }

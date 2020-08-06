@@ -47,7 +47,7 @@ namespace Hyperai.Services
         /// <typeparam name="T">事件类型</typeparam>
         /// <param name="args">包含具体参数的实例</param>
         /// <returns></returns>
-        Task SendAsync<T>(T args) where T : MessageEventArgs;
+        Task SendAsync<T>(T args) where T : GenericEventArgs;
 
         [Obsolete]
         void SendRawAsync(string resource);
