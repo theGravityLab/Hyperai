@@ -4,6 +4,6 @@
     {
         Friend,
         Group,
-        Temp
+        Stranger
     }
 }
