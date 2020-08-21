@@ -1,6 +1,7 @@
 ﻿using Hyperai.Events;
 using Hyperai.Messages;
 using Hyperai.Messages.ConcreteModels;
+using Hyperai.Receipts;
 using Hyperai.Relations;
 using System;
 using System.Linq;
@@ -16,24 +17,24 @@ namespace Hyperai.Services
             return client;
         }
 
-        public static async Task SendFriendMessageAsync(this IApiClient client, Friend friend, MessageChain message)
+        public static async Task<MessageReceipt> SendFriendMessageAsync(this IApiClient client, Friend friend, MessageChain message)
         {
             FriendMessageEventArgs args = new FriendMessageEventArgs()
             {
                 Message = message,
                 User = friend
             };
-            await client.SendAsync(args);
+            return ((MessageReceipt)await client.SendAsync(args));
         }
 
-        public static async Task SendGroupMessageAsync(this IApiClient client, Group group, MessageChain message)
+        public static async Task<MessageReceipt> SendGroupMessageAsync(this IApiClient client, Group group, MessageChain message)
         {
             GroupMessageEventArgs args = new GroupMessageEventArgs()
             {
                 Message = message,
                 Group = group
             };
-            await client.SendAsync(args);
+            return ((MessageReceipt)await client.SendAsync(args));
         }
 
         public static async Task RevokeMessageAsync(this IApiClient client, long messageId)
