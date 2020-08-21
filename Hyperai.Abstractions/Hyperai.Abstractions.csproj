@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>Hyperai</RootNamespace>
-    <AssemblyVersion>2020.8.6</AssemblyVersion>
+    <AssemblyVersion>2020.8.21</AssemblyVersion>
     <PackageId>Hyperai.Abstractions</PackageId>
-    <Version>2020.8.6</Version>
+    <Version>2020.8.21</Version>
     <Authors>GravityLab</Authors>
     <Company>Unicore</Company>
     <License>https://github.com/theGravityLab/Hyperai.Abstractions/blob/master/LICENSE</License>

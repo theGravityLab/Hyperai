@@ -1,4 +1,5 @@
 ﻿using Hyperai.Events;
+using Hyperai.Receipts;
 using System;
 using System.Threading.Tasks;
 
@@ -46,8 +47,8 @@ namespace Hyperai.Services
         /// </summary>
         /// <typeparam name="T">事件类型</typeparam>
         /// <param name="args">包含具体参数的实例</param>
-        /// <returns></returns>
-        Task SendAsync<T>(T args) where T : GenericEventArgs;
+        /// <returns>回执</returns>
+        Task<GenericReceipt> SendAsync<TArgs>(TArgs args) where TArgs : GenericEventArgs;
 
         [Obsolete]
         void SendRawAsync(string resource);
