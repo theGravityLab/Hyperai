@@ -29,7 +29,7 @@ namespace Hyperai.Relations
         /// <summary>
         /// 是否被禁言
         /// </summary>
-        public string IsMuted { get; set; }
+        public bool IsMuted { get; set; }
 
         /// <summary>
         /// 所在群

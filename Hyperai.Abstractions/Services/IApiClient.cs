@@ -32,9 +32,6 @@ namespace Hyperai.Services
         /// <returns>全新模型实例</returns>
         Task<T> RequestAsync<T>(T model);
 
-        [Obsolete]
-        string RequestRawAsync(string resource);
-
         /// <summary>
         /// 监听某一类型的事件
         /// </summary>
@@ -49,8 +46,5 @@ namespace Hyperai.Services
         /// <param name="args">包含具体参数的实例</param>
         /// <returns>回执</returns>
         Task<GenericReceipt> SendAsync<TArgs>(TArgs args) where TArgs : GenericEventArgs;
-
-        [Obsolete]
-        void SendRawAsync(string resource);
     }
 }
