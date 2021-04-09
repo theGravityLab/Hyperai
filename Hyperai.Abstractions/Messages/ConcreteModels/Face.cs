@@ -5,12 +5,12 @@ namespace Hyperai.Messages.ConcreteModels
     [Serializable]
     public class Face : MessageComponent
     {
-        public int FaceId { get; set; }
-
         public Face(int faceId)
         {
             FaceId = faceId;
         }
+
+        public int FaceId { get; set; }
 
         public override int GetHashCode()
         {
@@ -213,6 +213,6 @@ namespace Hyperai.Messages.ConcreteModels
         TOUKAN = 237,
         SHANLIAN = 238,
         YUANLIANG = 239,
-        PENLIAN = 24,
+        PENLIAN = 24
     }
 }

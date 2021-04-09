@@ -1,6 +1,6 @@
-﻿using Hyperai.Messages;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using Hyperai.Messages;
 
 namespace Hyperai.Serialization
 {
@@ -8,21 +8,15 @@ namespace Hyperai.Serialization
     {
         public MessageChain Parse(string text)
         {
-            MessageChainBuilder builder = new MessageChainBuilder();
-            MatchCollection res = Regex.Matches(text, @"\[hyper\.(?<name>[a-z]+)\((?<code>[a-z0-9A-Z_\\:/,.@\-=?&#{}\ ]*)\)\]");
-            int last = 0;
-            Queue<Match> queue = new Queue<Match>();
-            foreach (Match match in res)
-            {
-                queue.Enqueue(match);
-            }
+            var builder = new MessageChainBuilder();
+            var res = Regex.Matches(text, @"\[hyper\.(?<name>[a-z]+)\((?<code>[a-z0-9A-Z_\\:/,.@\-=?&#{}\ ]*)\)\]");
+            var last = 0;
+            var queue = new Queue<Match>();
+            foreach (Match match in res) queue.Enqueue(match);
             while (queue.Count > 0)
             {
-                Match match = queue.Peek();
-                if (!Validate(match.Index, text))
-                {
-                    continue;
-                }
+                var match = queue.Peek();
+                if (!Validate(match.Index, text)) continue;
 
                 if (match.Index > last)
                 {
@@ -31,26 +25,22 @@ namespace Hyperai.Serialization
                 }
                 else
                 {
-                    builder.Add(MessageComponentFactory.Produce(match.Groups["name"].Value, match.Groups["code"].Value));
+                    builder.Add(MessageComponentFactory.Produce(match.Groups["name"].Value,
+                        match.Groups["code"].Value));
                     last = match.Index + match.Length;
                     queue.Dequeue();
                 }
             }
-            if (last < text.Length)
-            {
-                builder.AddPlain(text.Substring(last));
-            }
+
+            if (last < text.Length) builder.AddPlain(text.Substring(last));
 
             return builder.Build();
         }
 
         private bool Validate(int pos, string text)
         {
-            int start = pos;
-            while (start > 0 && text[start - 1] == '\\')
-            {
-                start--;
-            }
+            var start = pos;
+            while (start > 0 && text[start - 1] == '\\') start--;
 
             return (pos - start) % 2 == 0;
         }

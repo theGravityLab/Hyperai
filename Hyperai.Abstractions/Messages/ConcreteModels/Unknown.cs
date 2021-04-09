@@ -2,12 +2,12 @@
 {
     public class Unknown : MessageComponent
     {
-        public string Data { get; set; }
-
         public Unknown(string data)
         {
             Data = data;
         }
+
+        public string Data { get; set; }
 
         public override int GetHashCode()
         {

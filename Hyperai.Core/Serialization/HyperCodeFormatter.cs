@@ -1,8 +1,8 @@
-﻿using Hyperai.Messages;
-using Hyperai.Messages.ConcreteModels;
-using System;
+﻿using System;
 using System.Linq;
 using System.Reflection;
+using Hyperai.Messages;
+using Hyperai.Messages.ConcreteModels;
 
 namespace Hyperai.Serialization
 {
@@ -10,7 +10,9 @@ namespace Hyperai.Serialization
     {
         public string Format(MessageChain chain)
         {
-            return string.Join(string.Empty, chain.Where(x => x.GetType().GetCustomAttribute<SerializableAttribute>() != null).Select(x => PlainSelector(x)));
+            return string.Join(string.Empty,
+                chain.Where(x => x.GetType().GetCustomAttribute<SerializableAttribute>() != null)
+                    .Select(PlainSelector));
 
             string PlainSelector(MessageComponent comp)
             {

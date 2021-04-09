@@ -1,11 +1,9 @@
-﻿using Hyperai.Events;
+﻿using System;
+using System.Threading.Tasks;
+using Hyperai.Events;
 using Hyperai.Messages;
-using Hyperai.Messages.ConcreteModels;
 using Hyperai.Receipts;
 using Hyperai.Relations;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Hyperai.Services
 {
@@ -17,38 +15,40 @@ namespace Hyperai.Services
             return client;
         }
 
-        public static async Task<MessageReceipt> SendFriendMessageAsync(this IApiClient client, Friend friend, MessageChain message)
+        public static async Task<MessageReceipt> SendFriendMessageAsync(this IApiClient client, Friend friend,
+            MessageChain message)
         {
-            FriendMessageEventArgs args = new FriendMessageEventArgs()
+            var args = new FriendMessageEventArgs
             {
                 Message = message,
                 User = friend
             };
-            return ((MessageReceipt)await client.SendAsync(args));
+            return (MessageReceipt) await client.SendAsync(args);
         }
 
-        public static async Task<MessageReceipt> SendGroupMessageAsync(this IApiClient client, Group group, MessageChain message)
+        public static async Task<MessageReceipt> SendGroupMessageAsync(this IApiClient client, Group group,
+            MessageChain message)
         {
-            GroupMessageEventArgs args = new GroupMessageEventArgs()
+            var args = new GroupMessageEventArgs
             {
                 Message = message,
                 Group = group
             };
-            return ((MessageReceipt)await client.SendAsync(args));
+            return (MessageReceipt) await client.SendAsync(args);
         }
 
         public static async Task RevokeMessageAsync(this IApiClient client, long messageId)
         {
-            RecallEventArgs args = new RecallEventArgs()
+            var args = new RecallEventArgs
             {
-                MessageId = messageId,
+                MessageId = messageId
             };
             await client.SendAsync(args);
         }
 
         public static async Task Kick(this IApiClient client, Group group, Member member)
         {
-            GroupMemberLeftEventArgs args = new GroupMemberLeftEventArgs()
+            var args = new GroupMemberLeftEventArgs
             {
                 Group = group,
                 IsKicked = true,
@@ -59,17 +59,17 @@ namespace Hyperai.Services
 
         public static async Task Quit(this IApiClient client, Group group)
         {
-            GroupSelfLeftEventArgs args = new GroupSelfLeftEventArgs()
+            var args = new GroupSelfLeftEventArgs
             {
                 Group = group,
-                IsKicked = false,
+                IsKicked = false
             };
             await client.SendAsync(args);
         }
 
         public static async Task Mute(this IApiClient client, Group group, Member member, TimeSpan duration)
         {
-            GroupMemberMutedEventArgs args = new GroupMemberMutedEventArgs()
+            var args = new GroupMemberMutedEventArgs
             {
                 Group = group,
                 Whom = member,
@@ -80,7 +80,7 @@ namespace Hyperai.Services
 
         public static async Task MuteAll(this IApiClient client, Group group, TimeSpan duration)
         {
-            GroupAllMutedEventArgs args = new GroupAllMutedEventArgs()
+            var args = new GroupAllMutedEventArgs
             {
                 Group = group,
                 IsEnded = false,

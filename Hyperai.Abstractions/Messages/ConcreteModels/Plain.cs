@@ -5,10 +5,8 @@ namespace Hyperai.Messages.ConcreteModels
     [Serializable]
     public class Plain : MessageComponent
     {
-        public string Text { get; set; }
-
         /// <summary>
-        /// 构造一个 <see cref="Plain" /> 对象
+        ///     构造一个 <see cref="Plain" /> 对象
         /// </summary>
         /// <param name="text">表示的纯文本</param>
         /// <exception cref="ArgumentNullException" />
@@ -16,6 +14,8 @@ namespace Hyperai.Messages.ConcreteModels
         {
             Text = text ?? throw new ArgumentNullException("Text cannot be null.");
         }
+
+        public string Text { get; set; }
 
         public override int GetHashCode()
         {

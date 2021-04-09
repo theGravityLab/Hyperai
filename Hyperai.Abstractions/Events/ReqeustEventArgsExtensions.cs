@@ -4,9 +4,11 @@ namespace Hyperai.Events
 {
     public static class ReqeustEventArgsExtensions
     {
-        public static FriendRequestResponsedEventArgs MakeResponse(this FriendRequestEventArgs args, FriendRequestResponseOperationType action = FriendRequestResponseOperationType.Accepted, string message = "")
+        public static FriendRequestResponsedEventArgs MakeResponse(this FriendRequestEventArgs args,
+            FriendRequestResponseOperationType action = FriendRequestResponseOperationType.Accepted,
+            string message = "")
         {
-            return new FriendRequestResponsedEventArgs()
+            return new()
             {
                 EventId = args.EventId,
                 FromWhom = args.FromWhom,
@@ -17,9 +19,11 @@ namespace Hyperai.Events
             };
         }
 
-        public static MemberRequestResponsedEventArgs MakeResponse(this GroupMemberRequestEventArgs args, MemberRequestResponseOperationType action = MemberRequestResponseOperationType.Accepted, string message = "")
+        public static MemberRequestResponsedEventArgs MakeResponse(this GroupMemberRequestEventArgs args,
+            MemberRequestResponseOperationType action = MemberRequestResponseOperationType.Accepted,
+            string message = "")
         {
-            return new MemberRequestResponsedEventArgs()
+            return new()
             {
                 EventId = args.EventId,
                 FromWhom = args.FromWhom,
@@ -30,9 +34,10 @@ namespace Hyperai.Events
             };
         }
 
-        public static InvitationResponsedEventArgs MakeResponse(this SelfInvitedIntoGroupEventArgs args, InvitationResponseOperationType action = InvitationResponseOperationType.Accepted, string message = "")
+        public static InvitationResponsedEventArgs MakeResponse(this SelfInvitedIntoGroupEventArgs args,
+            InvitationResponseOperationType action = InvitationResponseOperationType.Accepted, string message = "")
         {
-            return new InvitationResponsedEventArgs()
+            return new()
             {
                 EventId = args.EventId,
                 IntoWhichGroup = args.IntoWhichGroup,

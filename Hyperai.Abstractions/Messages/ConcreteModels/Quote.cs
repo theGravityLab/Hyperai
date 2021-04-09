@@ -5,12 +5,12 @@ namespace Hyperai.Messages.ConcreteModels
     [Serializable]
     public class Quote : MessageComponent
     {
-        public long MessageId { get; set; }
-
         public Quote(long messageId)
         {
             MessageId = messageId;
         }
+
+        public long MessageId { get; set; }
 
         public override int GetHashCode()
         {

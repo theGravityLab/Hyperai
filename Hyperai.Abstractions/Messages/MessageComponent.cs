@@ -5,7 +5,7 @@
         public virtual string TypeName => GetType().Name;
 
         /// <summary>
-        /// 将内容转换为字符串表示. 这将跳过无法表示的特殊类型, 或用符号代替.
+        ///     将内容转换为字符串表示. 这将跳过无法表示的特殊类型, 或用符号代替.
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -14,7 +14,7 @@
         }
 
         /// <summary>
-        /// 获取内容的哈希并用于比较相等性
+        ///     获取内容的哈希并用于比较相等性
         /// </summary>
         /// <returns></returns>
         public abstract override int GetHashCode();

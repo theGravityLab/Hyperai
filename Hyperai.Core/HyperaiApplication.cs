@@ -1,10 +1,10 @@
-﻿using Hyperai.Events;
+﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Hyperai.Events;
 using Hyperai.Middlewares;
 using Hyperai.Services;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace Hyperai
 {
@@ -14,24 +14,21 @@ namespace Hyperai
         public IServiceProvider Provider { get; set; }
 
         /// <summary>
-        /// 创建一个线程并运行 <see cref="Run" />
+        ///     创建一个线程并运行
         /// </summary>
         public async Task StartAsync()
         {
             await Task.Run(() =>
             {
-                IApiClient apiClient = Provider.GetRequiredService<IApiClient>();
+                var apiClient = Provider.GetRequiredService<IApiClient>();
                 apiClient.Connect();
                 apiClient.On<GenericEventArgs>((sender, args) =>
                 {
-                    using IServiceScope scope = Provider.CreateScope();
-                    foreach (Type type in Middlewares)
+                    using var scope = Provider.CreateScope();
+                    foreach (var type in Middlewares)
                     {
-                        IMiddleware middleware = ActivatorUtilities.CreateInstance(Provider, type) as IMiddleware;
-                        if (!middleware.Run(sender, args))
-                        {
-                            break;
-                        }
+                        var middleware = ActivatorUtilities.CreateInstance(Provider, type) as IMiddleware;
+                        if (!middleware!.Run(sender, args)) break;
                     }
                 });
                 apiClient.Listen();
@@ -42,9 +39,9 @@ namespace Hyperai
         {
             await Task.Run(() =>
             {
-                IApiClient apiClient = Provider.GetRequiredService<IApiClient>();
+                var apiClient = Provider.GetRequiredService<IApiClient>();
                 apiClient.Disconnect();
-                ((IDisposable)Provider).Dispose();
+                ((IDisposable) Provider).Dispose();
             });
         }
     }

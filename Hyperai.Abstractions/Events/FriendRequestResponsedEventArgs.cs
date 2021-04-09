@@ -13,6 +13,6 @@
     {
         Accepted = 0,
         Refused = 1,
-        Banned = 2,
+        Banned = 2
     }
 }
