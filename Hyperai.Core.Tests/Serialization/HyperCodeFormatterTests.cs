@@ -16,7 +16,7 @@ namespace Hyperai.Core.Tests.Serialization
             var builder = new MessageChainBuilder();
             builder.Add(new Source(1024));
             builder.AddPlain("World");
-            builder.Add(new Image("id", new Uri("https://example.com")));
+            builder.Add(Image.FromUrl("id",new Uri("https://example.com", UriKind.Absolute)));
             builder.AddPlain("Hello");
             var chain = builder.Build();
             var formatter = new HyperCodeFormatter();

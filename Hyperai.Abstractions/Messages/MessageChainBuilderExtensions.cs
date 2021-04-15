@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using Hyperai.Messages.ConcreteModels;
+using Hyperai.Messages.ConcreteModels.ImageSources;
 
 namespace Hyperai.Messages
 {
@@ -11,20 +13,9 @@ namespace Hyperai.Messages
             return builder.Add(plain);
         }
 
-        public static MessageChainBuilder AddImage(this MessageChainBuilder builder, Uri url)
+        public static MessageChainBuilder AddImage(this MessageChainBuilder builder, string imageId, IImageSource source)
         {
-            return AddImage(builder, null, url);
-        }
-
-        public static MessageChainBuilder AddImage(this MessageChainBuilder builder, string imageId)
-        {
-            return AddImage(builder, imageId, null);
-        }
-
-        public static MessageChainBuilder AddImage(this MessageChainBuilder builder, string imageId, Uri url)
-        {
-            var image = new Image(imageId, url);
-            return builder.Add(image);
+            return AddImage(builder, imageId, source);
         }
 
         public static MessageChainBuilder AddFace(this MessageChainBuilder builder, FaceType type)
@@ -44,19 +35,9 @@ namespace Hyperai.Messages
             return builder.Add(poke);
         }
 
-        public static MessageChainBuilder AddFlash(this MessageChainBuilder builder, Uri url)
+        public static MessageChainBuilder AddFlash(this MessageChainBuilder builder, string imageId, IImageSource source)
         {
-            return AddFlash(builder, null, url);
-        }
-
-        public static MessageChainBuilder AddFlash(this MessageChainBuilder builder, string imageId)
-        {
-            return AddFlash(builder, imageId, null);
-        }
-
-        public static MessageChainBuilder AddFlash(this MessageChainBuilder builder, string imageId, Uri url)
-        {
-            var image = new Flash(imageId, url);
+            var image = new Flash(imageId, source);
             return builder.Add(image);
         }
 

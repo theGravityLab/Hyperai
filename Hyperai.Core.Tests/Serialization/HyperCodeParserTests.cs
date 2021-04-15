@@ -1,6 +1,7 @@
 ﻿using System;
 using Hyperai.Messages;
 using Hyperai.Messages.ConcreteModels;
+using Hyperai.Messages.ConcreteModels.ImageSources;
 using Hyperai.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -17,8 +18,8 @@ namespace Hyperai.Core.Tests.Serialization
             builder.Add(new Source(1024));
             builder.AddPlain("World");
             builder.Add(new Image("{3A9B96FE-FDB8-D597-560A-3517A8031F5A}.mirai",
-                new Uri(
-                    "http://gchat.qpic.cn/gchatpic_new/2419328026/594429092-2161359014-3A9B96FEFDB8D597560A3517A8031F5A/0?term=2")));
+                new UrlSource(new Uri(
+                    "http://gchat.qpic.cn/gchatpic_new/2419328026/594429092-2161359014-3A9B96FEFDB8D597560A3517A8031F5A/0?term=2"))));
             builder.AddPlain("Hello");
             var chain = builder.Build();
             var parser = new HyperCodeParser();
