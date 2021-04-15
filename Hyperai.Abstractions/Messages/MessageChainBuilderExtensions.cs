@@ -15,7 +15,8 @@ namespace Hyperai.Messages
 
         public static MessageChainBuilder AddImage(this MessageChainBuilder builder, string imageId, IImageSource source)
         {
-            return AddImage(builder, imageId, source);
+            var image = new Image(imageId, source);
+            return builder.Add(image);
         }
 
         public static MessageChainBuilder AddFace(this MessageChainBuilder builder, FaceType type)
