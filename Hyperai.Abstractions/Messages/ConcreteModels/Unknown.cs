@@ -1,6 +1,6 @@
 ﻿namespace Hyperai.Messages.ConcreteModels
 {
-    public class Unknown : MessageComponent
+    public class Unknown : MessageElement
     {
         public Unknown(string data)
         {

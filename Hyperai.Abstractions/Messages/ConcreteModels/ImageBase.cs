@@ -5,7 +5,7 @@ using Hyperai.Messages.ConcreteModels.ImageSources;
 
 namespace Hyperai.Messages.ConcreteModels
 {
-    public abstract class ImageBase : MessageComponent
+    public abstract class ImageBase : MessageElement
     {
         public string ImageId { get; set; }
         

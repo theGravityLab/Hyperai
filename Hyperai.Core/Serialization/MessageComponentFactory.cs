@@ -7,7 +7,7 @@ namespace Hyperai.Serialization
 {
     public static class MessageComponentFactory
     {
-        public static MessageComponent Produce(string name, string code)
+        public static MessageElement Produce(string name, string code)
         {
             return name.ToLower() switch
             {

@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>Hyperai</RootNamespace>
     <PackageId>Hyperai.Abstractions</PackageId>
-    <Version>2021.4.15.1</Version>
+    <Version>2021.5.18</Version>
     <Authors>GravityLab</Authors>
     <Company>Unicore</Company>
     <License>https://github.com/theGravityLab/Hyperai.Abstractions/blob/master/LICENSE</License>

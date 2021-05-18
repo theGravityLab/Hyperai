@@ -3,7 +3,7 @@
 namespace Hyperai.Messages.ConcreteModels
 {
     [Serializable]
-    public class At : MessageComponent
+    public class At : MessageElement
     {
         public At(long targetId)
         {

@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <RootNamespace>Hyperai</RootNamespace>
     <PackageId>Hyperai.Core</PackageId>
-    <Version>2021.4.15</Version>
+    <Version>2021.5.18</Version>
     <Authors>GravityLab</Authors>
     <Company>Unicore</Company>
     <PackageDescription>Hyperai.Core</PackageDescription>
