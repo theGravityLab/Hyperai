@@ -6,5 +6,6 @@ namespace Hyperai.Events
     {
         public Member Who { get; set; }
         public Group Group { get; set; }
+        public Member Operator { get; set; }
     }
 }

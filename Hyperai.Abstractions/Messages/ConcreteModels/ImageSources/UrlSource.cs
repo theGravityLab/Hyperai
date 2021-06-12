@@ -10,6 +10,7 @@ namespace Hyperai.Messages.ConcreteModels.ImageSources
         public bool IsRemote => Url.Scheme.Equals("https", StringComparison.OrdinalIgnoreCase) ||
                                 Url.Scheme.Equals("http", StringComparison.OrdinalIgnoreCase);
         public UrlSource(Uri url) => Url = url;
+        public UrlSource(string url) => Url = new Uri(url, UriKind.Absolute);
         public Stream OpenRead()
         {
             return Url.Scheme switch

@@ -78,13 +78,12 @@ namespace Hyperai.Services
             await client.SendAsync(args);
         }
 
-        public static async Task MuteAllAsync(this IApiClient client, Group group, TimeSpan duration)
+        public static async Task MuteAllAsync(this IApiClient client, Group group)
         {
             var args = new GroupAllMutedEventArgs
             {
                 Group = group,
                 IsEnded = false,
-                Duration = duration
             };
             await client.SendAsync(args);
         }
