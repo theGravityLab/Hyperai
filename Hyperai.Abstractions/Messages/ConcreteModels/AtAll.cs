@@ -3,7 +3,7 @@
 namespace Hyperai.Messages.ConcreteModels
 {
     [Serializable]
-    public class AtAll : MessageComponent
+    public class AtAll : MessageElement
     {
         public override int GetHashCode()
         {

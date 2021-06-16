@@ -3,7 +3,7 @@
 namespace Hyperai.Messages.ConcreteModels
 {
     [Serializable]
-    public class Face : MessageComponent
+    public class Face : MessageElement
     {
         public Face(int faceId)
         {

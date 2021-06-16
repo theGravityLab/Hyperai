@@ -1,6 +1,6 @@
 ﻿namespace Hyperai.Messages.ConcreteModels
 {
-    public class ContentBase : MessageComponent
+    public class ContentBase : MessageElement
     {
         public string Content { get; set; }
 

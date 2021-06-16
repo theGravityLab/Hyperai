@@ -3,7 +3,7 @@
 namespace Hyperai.Messages.ConcreteModels
 {
     [Serializable]
-    public class Plain : MessageComponent
+    public class Plain : MessageElement
     {
         /// <summary>
         ///     构造一个 <see cref="Plain" /> 对象

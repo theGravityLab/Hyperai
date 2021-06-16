@@ -1,6 +1,6 @@
 ﻿namespace Hyperai.Messages
 {
-    public abstract class MessageComponent
+    public abstract class MessageElement
     {
         public virtual string TypeName => GetType().Name;
 
@@ -24,12 +24,12 @@
             return GetHashCode().Equals(obj?.GetHashCode());
         }
 
-        public static bool operator ==(MessageComponent a, MessageComponent b)
+        public static bool operator ==(MessageElement a, MessageElement b)
         {
             return Equals(a, b);
         }
 
-        public static bool operator !=(MessageComponent a, MessageComponent b)
+        public static bool operator !=(MessageElement a, MessageElement b)
         {
             return !(a == b);
         }

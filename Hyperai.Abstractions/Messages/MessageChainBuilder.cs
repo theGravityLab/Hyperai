@@ -4,7 +4,7 @@ namespace Hyperai.Messages
 {
     public sealed class MessageChainBuilder : IBuilder<MessageChain>
     {
-        private readonly List<MessageComponent> components = new();
+        private readonly List<MessageElement> components = new();
 
         public MessageChain Build()
         {
@@ -12,9 +12,9 @@ namespace Hyperai.Messages
             return chain;
         }
 
-        public MessageChainBuilder Add(MessageComponent component)
+        public MessageChainBuilder Add(MessageElement element)
         {
-            components.Add(component);
+            components.Add(element);
             return this;
         }
     }

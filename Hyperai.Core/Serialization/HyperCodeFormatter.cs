@@ -15,7 +15,7 @@ namespace Hyperai.Serialization
                 chain.Where(x => x.GetType().GetCustomAttribute<SerializableAttribute>() != null)
                     .Select(PlainSelector));
 
-            string PlainSelector(MessageComponent comp)
+            string PlainSelector(MessageElement comp)
             {
                 return comp switch
                 {
@@ -24,7 +24,7 @@ namespace Hyperai.Serialization
                 };
             }
 
-            string CodeSelector(MessageComponent comp)
+            string CodeSelector(MessageElement comp)
             {
                 return comp switch
                 {

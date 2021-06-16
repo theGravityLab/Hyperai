@@ -46,7 +46,7 @@ namespace Hyperai.Services
             await client.SendAsync(args);
         }
 
-        public static async Task Kick(this IApiClient client, Group group, Member member)
+        public static async Task KickAsync(this IApiClient client, Group group, Member member)
         {
             var args = new GroupMemberLeftEventArgs
             {
@@ -57,7 +57,7 @@ namespace Hyperai.Services
             await client.SendAsync(args);
         }
 
-        public static async Task Quit(this IApiClient client, Group group)
+        public static async Task QuitAsync(this IApiClient client, Group group)
         {
             var args = new GroupSelfLeftEventArgs
             {
@@ -67,7 +67,7 @@ namespace Hyperai.Services
             await client.SendAsync(args);
         }
 
-        public static async Task Mute(this IApiClient client, Group group, Member member, TimeSpan duration)
+        public static async Task MuteAsync(this IApiClient client, Group group, Member member, TimeSpan duration)
         {
             var args = new GroupMemberMutedEventArgs
             {
@@ -78,13 +78,12 @@ namespace Hyperai.Services
             await client.SendAsync(args);
         }
 
-        public static async Task MuteAll(this IApiClient client, Group group, TimeSpan duration)
+        public static async Task MuteAllAsync(this IApiClient client, Group group)
         {
             var args = new GroupAllMutedEventArgs
             {
                 Group = group,
                 IsEnded = false,
-                Duration = duration
             };
             await client.SendAsync(args);
         }

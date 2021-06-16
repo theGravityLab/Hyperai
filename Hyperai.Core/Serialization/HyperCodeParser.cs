@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Text.RegularExpressions;
 using Hyperai.Messages;
 
@@ -6,10 +8,12 @@ namespace Hyperai.Serialization
 {
     public class HyperCodeParser : IMessageChainParser
     {
+        private static readonly Regex standardRegex =
+            new Regex(@"\[hyper\.(?<name>[a-z]+)\((?<code>[a-z0-9A-Z_\\:/,.@\-=?&#{}\ ]*)\)\]");
         public MessageChain Parse(string text)
         {
             var builder = new MessageChainBuilder();
-            var res = Regex.Matches(text, @"\[hyper\.(?<name>[a-z]+)\((?<code>[a-z0-9A-Z_\\:/,.@\-=?&#{}\ ]*)\)\]");
+            var res = standardRegex.Matches(text);
             var last = 0;
             var queue = new Queue<Match>();
             foreach (Match match in res) queue.Enqueue(match);
@@ -25,7 +29,7 @@ namespace Hyperai.Serialization
                 }
                 else
                 {
-                    builder.Add(MessageComponentFactory.Produce(match.Groups["name"].Value,
+                    builder.Add(MessageElementFactory.Produce(match.Groups["name"].Value,
                         match.Groups["code"].Value));
                     last = match.Index + match.Length;
                     queue.Dequeue();
