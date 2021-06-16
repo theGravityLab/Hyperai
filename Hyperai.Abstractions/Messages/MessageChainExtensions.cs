@@ -47,5 +47,15 @@ namespace Hyperai.Messages
         {
             return new(chain.Where(x => !(x is Source) && !(x is Quote)));
         }
+
+        /// <summary>
+        ///     返回当前消息链的<see cref="type" />类型形式
+        /// </summary>
+        /// <param name="chain">原链</param>
+        /// <returns>不包含不便于程序阅读元素的新链</returns>
+        public static MessageChain AsTargetChain(this MessageChain chain, Type type)
+        {
+            return new MessageChain(chain.Where(x => x.TypeName.Equals(type.Name)));
+        }
     }
 }
