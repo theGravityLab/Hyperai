@@ -13,16 +13,24 @@ namespace Hyperai.Messages.ConcreteModels
             Source = source;
         }
 
-        public override string ToString() =>
-            $"<IMAGE {ImageId}>";
+        public override string ToString()
+        {
+            return $"<IMAGE {ImageId}>";
+        }
 
-        public override int GetHashCode() =>
-            ImageId.GetHashCode();
+        public override int GetHashCode()
+        {
+            return ImageId.GetHashCode();
+        }
 
-        public static Image FromUrl(string id, Uri url) => 
-            new (id, new UrlSource(url));
+        public static Image FromUrl(string id, Uri url)
+        {
+            return new(id, new UrlSource(url));
+        }
 
-        public static Image FromStream(string id, Stream stream) =>
-            new(id, new StreamSource(stream));
+        public static Image FromStream(string id, Stream stream)
+        {
+            return new(id, new StreamSource(stream));
+        }
     }
 }

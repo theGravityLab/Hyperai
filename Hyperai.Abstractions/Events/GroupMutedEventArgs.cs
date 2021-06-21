@@ -1,5 +1,4 @@
-﻿using System;
-using Hyperai.Relations;
+﻿using Hyperai.Relations;
 
 namespace Hyperai.Events
 {

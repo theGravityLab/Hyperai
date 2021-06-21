@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using Hyperai.Messages.ConcreteModels;
+﻿using Hyperai.Messages.ConcreteModels;
 using Hyperai.Messages.ConcreteModels.ImageSources;
 
 namespace Hyperai.Messages
@@ -13,7 +11,8 @@ namespace Hyperai.Messages
             return builder.Add(plain);
         }
 
-        public static MessageChainBuilder AddImage(this MessageChainBuilder builder, string imageId, IImageSource source)
+        public static MessageChainBuilder AddImage(this MessageChainBuilder builder, string imageId,
+            IImageSource source)
         {
             var image = new Image(imageId, source);
             return builder.Add(image);
@@ -36,7 +35,8 @@ namespace Hyperai.Messages
             return builder.Add(poke);
         }
 
-        public static MessageChainBuilder AddFlash(this MessageChainBuilder builder, string imageId, IImageSource source)
+        public static MessageChainBuilder AddFlash(this MessageChainBuilder builder, string imageId,
+            IImageSource source)
         {
             var image = new Flash(imageId, source);
             return builder.Add(image);

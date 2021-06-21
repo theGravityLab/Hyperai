@@ -17,5 +17,11 @@ namespace Hyperai.Messages
             components.Add(element);
             return this;
         }
+
+        public MessageChainBuilder AddRange(IEnumerable<MessageElement> elements)
+        {
+            components.AddRange(elements);
+            return this;
+        }
     }
 }

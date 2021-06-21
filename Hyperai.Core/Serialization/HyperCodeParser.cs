@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Hyperai.Messages;
 
@@ -9,7 +7,8 @@ namespace Hyperai.Serialization
     public class HyperCodeParser : IMessageChainParser
     {
         private static readonly Regex standardRegex =
-            new Regex(@"\[hyper\.(?<name>[a-z]+)\((?<code>[a-z0-9A-Z_\\:/,.@\-=?&#{}\ ]*)\)\]");
+            new(@"\[hyper\.(?<name>[a-z]+)\((?<code>[a-z0-9A-Z_\\:/,.@\-=?&#{}\ ]*)\)\]");
+
         public MessageChain Parse(string text)
         {
             var builder = new MessageChainBuilder();

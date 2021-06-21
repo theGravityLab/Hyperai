@@ -83,7 +83,7 @@ namespace Hyperai.Services
             var args = new GroupAllMutedEventArgs
             {
                 Group = group,
-                IsEnded = false,
+                IsEnded = false
             };
             await client.SendAsync(args);
         }

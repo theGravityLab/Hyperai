@@ -18,7 +18,7 @@ namespace Hyperai
 
         public IHyperaiApplication Build()
         {
-            var startup = (IHyperaiApplicationBuilderStartup) Activator.CreateInstance(typeStartup, false);
+            var startup = Activator.CreateInstance(typeStartup, false) as IHyperaiApplicationBuilderStartup;
             startup!.ConfigureServices(Services);
             startup!.ConfigureMiddlewares(this);
             var app = new HyperaiApplication

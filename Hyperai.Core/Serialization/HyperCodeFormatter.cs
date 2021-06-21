@@ -31,7 +31,8 @@ namespace Hyperai.Serialization
                     At it => it.TargetId.ToString(),
                     AtAll it => string.Empty,
                     Face it => it.FaceId.ToString(),
-                    ImageBase it when it.Source != null && it.Source is UrlSource => $"{it.ImageId},{((UrlSource)it.Source).Url.AbsoluteUri}",
+                    ImageBase it when it.Source != null && it.Source is UrlSource =>
+                        $"{it.ImageId},{((UrlSource) it.Source).Url.AbsoluteUri}",
                     Poke it => it.Name.ToString(),
                     Quote it => it.MessageId.ToString(),
                     Source it => it.MessageId.ToString(),

@@ -12,10 +12,14 @@ namespace Hyperai.Messages.ConcreteModels
             Source = source;
         }
 
-        public override string ToString() =>
-            $"<FLASH {ImageId}>";
+        public override string ToString()
+        {
+            return $"<FLASH {ImageId}>";
+        }
 
-        public override int GetHashCode() => 
-            ImageId.GetHashCode();
+        public override int GetHashCode()
+        {
+            return ImageId.GetHashCode();
+        }
     }
 }
