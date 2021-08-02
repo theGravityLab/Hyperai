@@ -5,9 +5,9 @@ namespace Hyperai.Messages.ConcreteModels.ImageSources
 {
     public sealed class StreamSource : IImageSource, IDisposable
     {
-        public StreamSource(Stream from)
+        public StreamSource(Stream data)
         {
-            Data = from;
+            Data = data;
         }
 
         public Stream Data { get; set; }

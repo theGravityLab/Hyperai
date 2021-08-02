@@ -38,9 +38,9 @@ namespace Hyperai.Messages.ConcreteModels
     [Serializable]
     public class Poke : MessageElement
     {
-        public Poke(PokeType type)
+        public Poke(PokeType name)
         {
-            Name = type;
+            Name = name;
         }
 
         public PokeType Name { get; private set; }

@@ -7,9 +7,9 @@ namespace Hyperai.Messages.ConcreteModels
     [Serializable]
     public class Image : ImageBase
     {
-        public Image(string id, IImageSource source)
+        public Image(string imageId, IImageSource source)
         {
-            ImageId = id;
+            ImageId = imageId;
             Source = source;
         }
 

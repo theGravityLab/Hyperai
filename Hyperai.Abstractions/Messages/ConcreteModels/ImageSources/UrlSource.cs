@@ -4,16 +4,12 @@ using System.Net;
 
 namespace Hyperai.Messages.ConcreteModels.ImageSources
 {
+    [Serializable]
     public class UrlSource : IImageSource
     {
         public UrlSource(Uri url)
         {
             Url = url;
-        }
-
-        public UrlSource(string url)
-        {
-            Url = new Uri(url, UriKind.Absolute);
         }
 
         public Uri Url { get; set; }
