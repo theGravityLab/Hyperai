@@ -30,5 +30,20 @@ namespace Hyperai.Core.Tests.Serialization
             // A
             Assert.IsTrue(chain.ChainEquals(res));
         }
+
+        [TestMethod]
+        public void Parse_Unescape_Same()
+        {
+            var builder = new MessageChainBuilder();
+            builder.Add(new Source(1024))
+                .AddPlain(@"[hyper.atall()]")
+                .AddAtAll();
+            var chain = builder.Build();
+            var parser = new HyperCodeParser();
+
+            var res = parser.Parse(@"[hyper.source(1024)]\[hyper.atall()][hyper.atall()]");
+
+            Assert.IsTrue(chain.ChainEquals(res));
+        }
     }
 }

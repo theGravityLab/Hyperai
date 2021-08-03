@@ -6,15 +6,14 @@ using Hyperai.Middlewares;
 using Hyperai.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Options;
 
 namespace Hyperai
 {
     public class HyperaiServer : IHostedService
     {
         private readonly IApiClient _client;
-        private readonly IServiceProvider _provider;
         private readonly HyperaiServerOptions _options;
+        private readonly IServiceProvider _provider;
 
         public HyperaiServer(IApiClient client, IServiceProvider provider, HyperaiServerOptions options)
         {

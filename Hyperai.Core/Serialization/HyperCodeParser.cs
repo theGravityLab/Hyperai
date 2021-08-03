@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Text;
 using System.Text.RegularExpressions;
 using Hyperai.Messages;
 
@@ -6,46 +6,58 @@ namespace Hyperai.Serialization
 {
     public class HyperCodeParser : IMessageChainParser
     {
-        private static readonly Regex standardRegex =
+        internal static readonly Regex HyperRegex =
             new(@"\[hyper\.(?<name>[a-z]+)\((?<code>[a-z0-9A-Z_\\:/,.@\-=?&#{}\ ]*)\)\]");
 
         public MessageChain Parse(string text)
         {
             var builder = new MessageChainBuilder();
-            var res = standardRegex.Matches(text);
-            var last = 0;
-            var queue = new Queue<Match>();
-            foreach (Match match in res) queue.Enqueue(match);
-            while (queue.Count > 0)
-            {
-                var match = queue.Peek();
-                if (!Validate(match.Index, text)) continue;
+            var matches = HyperRegex.Matches(text);
 
-                if (match.Index > last)
-                {
-                    builder.AddPlain(text[last..match.Index]);
-                    last = match.Index;
-                }
-                else
-                {
-                    builder.Add(MessageElementFactory.Produce(match.Groups["name"].Value,
-                        match.Groups["code"].Value));
-                    last = match.Index + match.Length;
-                    queue.Dequeue();
-                }
+            var addedLength = 0;
+
+            foreach (Match match in matches)
+            {
+                if (!Validate(match.Index, text)) continue;
+                var plain = text[addedLength..match.Index];
+                if (!string.IsNullOrEmpty(plain)) builder.AddPlain(Unescape(plain));
+                builder.Add(MessageElementFactory.Produce(match.Groups["name"].Value, match.Groups["code"].Value));
+                addedLength = match.Index + match.Length;
             }
 
-            if (last < text.Length) builder.AddPlain(text.Substring(last));
-
+            if (addedLength < text.Length) builder.AddPlain(Unescape(text[addedLength..]));
             return builder.Build();
         }
 
-        private bool Validate(int pos, string text)
+        private static string Unescape(string text)
         {
+            StringBuilder sb = new();
+            var addedLength = 0;
+
+            var matches = HyperRegex.Matches(text);
+            foreach (Match match in matches)
+            {
+                var count = CountBefore(match.Index, text);
+                sb.Append(text[addedLength..(match.Index - (count / 2 + 1))]);
+                sb.Append(match.Value);
+                addedLength = match.Index + match.Length;
+            }
+
+            if (addedLength < text.Length) sb.Append(text[addedLength..]);
+            return sb.ToString();
+        }
+
+        internal static bool Validate(int pos, string text)
+        {
+            return CountBefore(pos, text) % 2 == 0;
+        }
+
+        internal static int CountBefore(int pos, string text)
+        {
+            // pos 是左括号的位置
             var start = pos;
             while (start > 0 && text[start - 1] == '\\') start--;
-
-            return (pos - start) % 2 == 0;
+            return pos - start;
         }
     }
 }

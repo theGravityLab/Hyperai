@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using System.Text;
+using System.Text.RegularExpressions;
 using Hyperai.Messages;
 using Hyperai.Messages.ConcreteModels;
 using Hyperai.Messages.ConcreteModels.ImageSources;
@@ -19,7 +21,7 @@ namespace Hyperai.Serialization
             {
                 return comp switch
                 {
-                    Plain it => it.Text,
+                    Plain it => Escape(it.Text),
                     _ => $"[hyper.{comp.TypeName.ToLower()}({CodeSelector(comp)})]"
                 };
             }
@@ -31,7 +33,7 @@ namespace Hyperai.Serialization
                     At it => it.TargetId.ToString(),
                     AtAll it => string.Empty,
                     Face it => it.FaceId.ToString(),
-                    ImageBase it when it.Source != null && it.Source is UrlSource =>
+                    ImageBase {Source: UrlSource} it =>
                         $"{it.ImageId},{((UrlSource) it.Source).Url.AbsoluteUri}",
                     Poke it => it.Name.ToString(),
                     Quote it => it.MessageId.ToString(),
@@ -40,6 +42,25 @@ namespace Hyperai.Serialization
                     _ => throw new NotImplementedException()
                 };
             }
+        }
+
+        public string Escape(string text)
+        {
+            StringBuilder sb = new();
+            var addedLength = 0;
+
+            var matches = HyperCodeParser.HyperRegex.Matches(text);
+            foreach (Match match in matches)
+            {
+                var count = HyperCodeParser.CountBefore(match.Index, text);
+                sb.Append(text[addedLength..match.Index]);
+                sb.Append('\\', count * 2 + 1);
+                sb.Append(match.Value);
+                addedLength = match.Index + match.Length;
+            }
+
+            if (addedLength < text.Length) sb.Append(text[addedLength..]);
+            return sb.ToString();
         }
     }
 }

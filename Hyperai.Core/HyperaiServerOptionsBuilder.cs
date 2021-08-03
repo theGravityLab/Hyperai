@@ -4,9 +4,17 @@ using Hyperai.Middlewares;
 
 namespace Hyperai
 {
-    public class HyperaiServerOptionsBuilder: IBuilder<HyperaiServerOptions>
+    public class HyperaiServerOptionsBuilder : IBuilder<HyperaiServerOptions>
     {
-        private readonly List<Type> middlewares = new List<Type>();
+        private readonly List<Type> middlewares = new();
+
+        public HyperaiServerOptions Build()
+        {
+            return new()
+            {
+                Middlewares = middlewares.AsReadOnly()
+            };
+        }
 
         public HyperaiServerOptionsBuilder Use(Type middleware)
         {
@@ -14,13 +22,6 @@ namespace Hyperai
                 throw new ArgumentException("Type should implements IMiddleware interface.");
             middlewares.Add(middleware);
             return this;
-        }
-        public HyperaiServerOptions Build()
-        {
-            return new()
-            {
-                Middlewares = middlewares.AsReadOnly()
-            };
         }
     }
 }

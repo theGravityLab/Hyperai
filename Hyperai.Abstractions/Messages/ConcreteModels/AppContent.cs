@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Hyperai.Messages.ConcreteModels
+﻿namespace Hyperai.Messages.ConcreteModels
 {
     public class AppContent : ContentBase
     {
