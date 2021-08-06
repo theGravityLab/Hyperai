@@ -2,8 +2,10 @@
 
 namespace Hyperai.Events
 {
-    public abstract class GroupJoinedEventArgs : GenericEventArgs
+    public class GroupJoinedEventArgs : GenericEventArgs
     {
+        public Member Who { get; set; }
         public Group Group { get; set; }
+        public Member Operator { get; set; }
     }
 }

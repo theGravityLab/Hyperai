@@ -48,7 +48,7 @@ namespace Hyperai.Services
 
         public static async Task KickAsync(this IApiClient client, Group group, Member member)
         {
-            var args = new GroupMemberLeftEventArgs
+            var args = new GroupLeftEventArgs
             {
                 Group = group,
                 IsKicked = true,
@@ -59,10 +59,17 @@ namespace Hyperai.Services
 
         public static async Task QuitAsync(this IApiClient client, Group group)
         {
-            var args = new GroupSelfLeftEventArgs
+            var me = await client.RequestAsync(new Self());
+            var args = new GroupLeftEventArgs
             {
                 Group = group,
-                IsKicked = false
+                IsKicked = false,
+                Who = new Member()
+                {
+                    Group = new Lazy<Group>(group),
+                    Identity = me.Identity
+                    
+                }
             };
             await client.SendAsync(args);
         }
