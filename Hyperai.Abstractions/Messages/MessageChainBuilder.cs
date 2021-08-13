@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using IBuilder;
 
 namespace Hyperai.Messages
 {
