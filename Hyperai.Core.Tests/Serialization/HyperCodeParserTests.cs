@@ -1,7 +1,7 @@
 ﻿using System;
 using Hyperai.Messages;
 using Hyperai.Messages.ConcreteModels;
-using Hyperai.Messages.ConcreteModels.ImageSources;
+using Hyperai.Messages.ConcreteModels.FileSources;
 using Hyperai.Serialization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

@@ -2,7 +2,11 @@
 
 namespace Hyperai.Events
 {
-    public class GroupLeftEventArgs : GenericEventArgs
+    /// <summary>
+    /// 发: 踢出成员
+    /// 收: 有成员退出
+    /// </summary>
+    public sealed class GroupLeftEventArgs : GenericEventArgs
     {
         
         public Member Who { get; set; }

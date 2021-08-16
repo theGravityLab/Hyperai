@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using Hyperai.Messages;
 using Hyperai.Messages.ConcreteModels;
-using Hyperai.Messages.ConcreteModels.ImageSources;
+using Hyperai.Messages.ConcreteModels.FileSources;
 
 namespace Hyperai.Serialization
 {
@@ -38,6 +38,9 @@ namespace Hyperai.Serialization
                     Poke it => it.Name.ToString(),
                     Quote it => it.MessageId.ToString(),
                     Source it => it.MessageId.ToString(),
+                    Music it => $"{it.Type},{it.MusicId}",
+
+                    StreamedFileBase {Source: UrlSource} it => $"{((UrlSource)it.Source).Url.AbsoluteUri}",
 
                     _ => throw new NotImplementedException()
                 };

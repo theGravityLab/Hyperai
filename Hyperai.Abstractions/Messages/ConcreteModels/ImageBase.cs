@@ -1,17 +1,22 @@
 ﻿using System.IO;
-using Hyperai.Messages.ConcreteModels.ImageSources;
+using Hyperai.Messages.ConcreteModels.FileSources;
 
 namespace Hyperai.Messages.ConcreteModels
 {
-    public abstract class ImageBase : MessageElement
+    public abstract class ImageBase : StreamedFileBase
     {
         public string ImageId { get; set; }
 
-        public IImageSource Source { get; set; }
-
-        public Stream OpenRead()
+        public override int GetHashCode()
         {
-            return Source.OpenRead();
+            return ImageId.GetHashCode();
+        }
+        
+        
+
+        public override string ToString()
+        {
+            return $"<{GetType().Name.ToUpper()} {ImageId}>";
         }
     }
 }

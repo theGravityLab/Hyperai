@@ -1,25 +1,26 @@
 ﻿using System;
-using Hyperai.Messages.ConcreteModels.ImageSources;
+using System.IO;
+using Hyperai.Messages.ConcreteModels.FileSources;
 
 namespace Hyperai.Messages.ConcreteModels
 {
     [Serializable]
     public class Flash : ImageBase
     {
-        public Flash(string imageId, IImageSource source)
+        public Flash(string imageId, IFileSource source)
         {
             ImageId = imageId;
             Source = source;
         }
-
-        public override string ToString()
+        
+        public static Flash FromUrl(string id, Uri url)
         {
-            return $"<FLASH {ImageId}>";
+            return new(id, new UrlSource(url));
         }
 
-        public override int GetHashCode()
+        public static Flash FromStream(string id, Stream stream)
         {
-            return ImageId.GetHashCode();
+            return new(id, new StreamSource(stream));
         }
     }
 }

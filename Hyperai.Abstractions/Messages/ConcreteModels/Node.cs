@@ -1,14 +1,18 @@
 namespace Hyperai.Messages.ConcreteModels
 {
-    public class ForwardNode: MessageElement
+    public class Node: MessageElement
     {
-        public long UserId { get; set; }
-        public long UserDisplayName { get; set; }
-        public MessageChain Content { get; set; }
-        
-        public override int GetHashCode()
+        public Node(long userId, string userDisplayName, MessageChain message)
         {
-            throw new System.NotImplementedException();
+            UserId = userId;
+            UserDisplayName = userDisplayName;
+            Message = message;
         }
+
+        public long UserId { get; set; }
+        public string UserDisplayName { get; set; }
+        public MessageChain Message { get; set; }
+
+        public override int GetHashCode() => 0; // 没法比较默认判相等
     }
 }

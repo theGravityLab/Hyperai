@@ -1,5 +1,5 @@
 ﻿using Hyperai.Messages.ConcreteModels;
-using Hyperai.Messages.ConcreteModels.ImageSources;
+using Hyperai.Messages.ConcreteModels.FileSources;
 
 namespace Hyperai.Messages
 {
@@ -12,7 +12,7 @@ namespace Hyperai.Messages
         }
 
         public static MessageChainBuilder AddImage(this MessageChainBuilder builder, string imageId,
-            IImageSource source)
+            IFileSource source)
         {
             var image = new Image(imageId, source);
             return builder.Add(image);
@@ -36,7 +36,7 @@ namespace Hyperai.Messages
         }
 
         public static MessageChainBuilder AddFlash(this MessageChainBuilder builder, string imageId,
-            IImageSource source)
+            IFileSource source)
         {
             var image = new Flash(imageId, source);
             return builder.Add(image);
