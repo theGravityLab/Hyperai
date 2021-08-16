@@ -1,9 +1,9 @@
 using System;
 using System.IO;
 
-namespace Hyperai.Messages.ConcreteModels.ImageSources
+namespace Hyperai.Messages.ConcreteModels.FileSources
 {
-    public sealed class StreamSource : IImageSource, IDisposable
+    public sealed class StreamSource : IFileSource, IDisposable
     {
         public StreamSource(Stream data)
         {

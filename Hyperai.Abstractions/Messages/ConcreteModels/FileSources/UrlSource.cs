@@ -2,10 +2,10 @@ using System;
 using System.IO;
 using System.Net;
 
-namespace Hyperai.Messages.ConcreteModels.ImageSources
+namespace Hyperai.Messages.ConcreteModels.FileSources
 {
     [Serializable]
-    public class UrlSource : IImageSource
+    public class UrlSource : IFileSource
     {
         public UrlSource(Uri url)
         {
