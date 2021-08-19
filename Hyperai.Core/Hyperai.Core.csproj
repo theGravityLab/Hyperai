@@ -8,9 +8,8 @@
     <Authors>GravityLab</Authors>
     <Company>Unicore</Company>
     <PackageDescription>Hyperai.Core</PackageDescription>
-    <RepositoryUrl>https://github.com/theGravityLab/Hyperai.Core</RepositoryUrl>
+    <RepositoryUrl>https://github.com/theGravityLab/Hyperai</RepositoryUrl>
     <Product>Hyperai</Product>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageLicenseExpression>GPL-3.0-only</PackageLicenseExpression>
   </PropertyGroup>
 
