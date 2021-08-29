@@ -11,5 +11,7 @@
         ///     备注
         /// </summary>
         public string Remark { get; set; }
+
+        public override string ToString() => $"{Remark ?? "NULL"}({Identifier ?? "UNKNOWN"})";
     }
 }

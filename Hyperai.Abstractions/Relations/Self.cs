@@ -19,5 +19,7 @@ namespace Hyperai.Relations
         ///     自己所加过的好友
         /// </summary>
         public Lazy<IEnumerable<Friend>> Friends { get; set; }
+
+        public override string ToString() => $"{Nickname ?? "NULL"}({Identifier ?? "UNKNOWN"})";
     }
 }

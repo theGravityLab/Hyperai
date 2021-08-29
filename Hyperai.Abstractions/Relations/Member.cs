@@ -40,5 +40,7 @@ namespace Hyperai.Relations
         ///     所在群中的角色
         /// </summary>
         public GroupRole Role { get; set; }
+
+        public override string ToString() => $"{DisplayName ?? "NULL"}({Identifier ?? "UNKNOWN"})";
     }
 }
